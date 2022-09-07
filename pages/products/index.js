@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 const Product = () => {
-    return <ul>
-        <li>Product 1</li>
-        <li>Product 2</li>
-        <li>Product 3</li>
-    </ul>
+    return <div>
+        <Link href="/products/1">Product 1</Link>
+        <Link href="/products/2">Product 2</Link>
+        <Link href="/products/3">Product 3</Link>
+    </div>
 }
 
 export default Product;
