@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 
-import Logo from "../images/logo.png";
+import Logo from "@images/logo.png";
 
 const Home = () => {
     const router = useRouter();
