@@ -29,7 +29,7 @@ export async function getServerSideProps(context){
         }
     } : {
         redirect: {
-            destination: '/api/auth/signin?callbackUrl=http://localhost:3000/posts',
+            destination: '/api/auth/signin?callbackUrl=https://next-start-one.vercel.app/posts',
             permanent: false
         }
     }
