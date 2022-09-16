@@ -6,7 +6,10 @@ import Logo from "@images/logo.png";
 
 const Home = () => {
     const router = useRouter();
+    const user = process.env.DB_USER;
 
+    console.log(user);
+    
     const onClick = () => {
         console.log("Placing your Order");
         router.push('/products');
