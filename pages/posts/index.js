@@ -19,14 +19,18 @@ const Posts = ({ posts }) => {
 
 export default Posts;
 
-export async function getStaticProps(){
-    const session = await getSession();
+export async function getServerSideProps(context){
+    const session = await getSession(context);
     const response = await fetch('https://jsonplaceholder.typicode.com/posts');
     const data = await response.json();
-    return {
+    return session ? {
         props: {
-            posts: session?.user ? data : null
-        },
-        revalidate: 10,
+            posts: data
+        }
+    } : {
+        redirect: {
+            destination: '/api/auth/signin?callbackUrl=http://localhost:3000/posts',
+            permanent: false
+        }
     }
 }
