@@ -13,4 +13,4 @@ import { comments } from "../../data/comments";
       comments.push(newComment);
       res.status(201).json(newComment);
    }
- }
+}

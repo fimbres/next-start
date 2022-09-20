@@ -1,12 +1,11 @@
 import React from 'react';
 
-const User = (props) => {
+export const User = ({ name, email, onClick }) => {
   return (
     <li>
-        <h2>{props.name}</h2>
-        <h2>{props.email}</h2>
+        <h2>{name}</h2>
+        <h2>{email}</h2>
+        <button onClick={onClick}>Click</button>
     </li>
   )
 }
-
-export default User;
