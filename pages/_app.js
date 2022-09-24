@@ -1,7 +1,12 @@
 import React from 'react';
 import { SessionProvider } from 'next-auth/react';
 
-import '../styles/globals.css'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import '../assets/css/global.css';
+import NavBar from '@components/NavBar';
 
 export default function App({
   Component,
@@ -11,10 +16,14 @@ export default function App({
     <SessionProvider session={session}>
       {Component.auth ? (
         <Auth>
+          <NavBar />
           <Component {...pageProps} />
         </Auth>
       ) : (
-        <Component {...pageProps} />
+        <>
+          <NavBar />
+          <Component {...pageProps} />
+        </>
       )}
     </SessionProvider>
   )

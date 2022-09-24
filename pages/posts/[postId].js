@@ -1,11 +1,18 @@
 import React from 'react';
 import { useRouter } from 'next/router';
+import { Box, Container, Paper, Typography } from '@mui/material';
 
 function Post({ post }) {
     const router = useRouter();
 
   return (
-    <div>{router.isFallback ? "Loading..." : post.title}</div>
+    <Box sx={{ backgroundColor: "#EEEEEE", height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+        <Container>
+            <Paper elevation={3} sx={{ padding: 15 }}>
+                <Typography textAlign="center" variant="h2">{router.isFallback ? "Loading..." : post.title}</Typography>
+            </Paper>
+        </Container>
+    </Box>
   )
 }
 

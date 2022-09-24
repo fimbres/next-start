@@ -3,33 +3,25 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Typography from '@mui/material/Typography';
+import { Container, AppBar, Toolbar, IconButton, Button } from "@mui/material";
+import MenuIcon from '@mui/icons-material/Menu';
 
 import Logo from "@images/logo.png";
+import { Box } from "@mui/system";
 
 const Home = () => {
     const router = useRouter();
     const user = process.env.DB_USER;
-    const { status } = useSession();
 
-    console.log(user);
-
-    const onClick = () => {
-        console.log("Placing your Order");
-        router.push('/products');
-    };
-    
-    return <div>
-        <Image src={Logo} alt="Logo" placeholder="blur" />
-        <Link href="/profile">Go to profile page</Link>
-        <Link href="/products">Go to products page</Link>
-        {status !== "authenticated" && <Link href="/api/auth/signin">
-            <a onClick={(e) => { e.preventDefault(); signIn(); }}>Log In/Sign Up</a>
-        </Link>}
-        {status === "authenticated" && <Link href="/api/auth/signout">
-            <a onClick={(e) => { e.preventDefault(); signOut(); }}>Log Out</a>
-        </Link>}
-        <button type="button" onClick={onClick}>Click here</button>
-    </div>
+    return (
+        <Box sx={{ backgroundColor: "#EEEEEE", height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Container sx={{ marginLeft: "auto", marginRight: "auto", textAlign: 'center' }}>
+                <Image src={Logo} alt="Logo" placeholder="blur" width={200} height={200} />
+                <Typography variant="h2" marginTop={5}>Next & MUI Project</Typography>
+            </Container>
+        </Box>
+    )
 }
 
 export default Home;

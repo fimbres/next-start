@@ -1,19 +1,35 @@
 import React from 'react';
 import Link from 'next/link';
 import { getSession } from 'next-auth/react';
+import { Box, Button, Card, CardActions, CardContent, Container, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 
 const Posts = ({ posts }) => {
+    const router = useRouter();
+
   return (
-    <>
-        <h1>Posts</h1>
-        {posts && posts.map(post => {
-            return (
-                <Link key={post.id} href={`/posts/${post.id}`} passHref>
-                    <h2>{post.title}</h2>
-                </Link>
-            );
-        })}
-    </>
+    <Box sx={{ backgroundColor: "#EEEEEE", height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+        <Container sx={{ paddingBottom: 10, paddingTop: 20 }}>
+            <Typography textAlign="center" variant="h1" marginBottom={10}>Posts</Typography>
+            {posts && posts.map(post => {
+                return (
+                    <Card sx={{ marginBottom: 5, padding: 4 }} key={post.id}>
+                        <CardContent>
+                            <Typography variant="h4" color="text.secondary" gutterBottom>
+                                {post.title}
+                            </Typography>
+                            <Typography variant="h5" component="div">
+                                {post.body.substr(0,90)}...
+                            </Typography>
+                        </CardContent>
+                        <CardActions>
+                            <Button size="small" onClick={() => router.push(`/posts/${post.id}`)}>See More</Button>
+                        </CardActions>
+                    </Card>
+                );
+            })}
+        </Container>
+    </Box>
   )
 }
 

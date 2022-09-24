@@ -3,8 +3,8 @@
         "baseUrl": ".",
         "paths": {
             "@components/*": ["components/*"],
-            "@data/*": ["data/*"],
-            "@images/*": ["images/*"],
+            "@data/*": ["assets/data/*"],
+            "@images/*": ["assets/images/*"],
         }
     }
 }
